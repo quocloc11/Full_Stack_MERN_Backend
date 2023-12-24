@@ -3,14 +3,18 @@
  * YouTube: https://youtube.com/@trungquandev
  * "A bit of fragrance clings to the hand that gives flowers!"
  */
+
 import express from 'express'
 import { StatusCodes } from 'http-status-codes'
-import { boardRouters } from './boardRoutes'
+
 const Router = express.Router()
 
-Router.get('/status', (req, res) => {
-  res.status(StatusCodes.OK).json({ message: 'Apis V1 are ready to use' })
-})
-Router.use('/boards', boardRouters)
+Router.route('/')
+  .get((req, res) => {
+    res.status(StatusCodes.OK).json({ message: 'Note Apis V1 are ready to use' })
+  })
+  .post((req, res) => {
+    res.status(StatusCodes.CREATED).json({ message: 'Note V1 are ready to use' })
+  })
 
-export const APIs_V1 = Router
+export const boardRouters = Router
